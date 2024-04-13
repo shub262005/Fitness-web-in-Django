@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Workout
+{% endblock %}
+{% block custom_style %}
+  <style>
+    body,
+    .container {
+      color: white;
+      background-color: #242323;
+    }
+    .btn {
+      background-color: #c0f03c;
+      color: black;
+    }
+    .card-body {
+      background-color: black;
+      color: white;
+    }
+    .card:hover {
+      border: #c0f03c solid 2px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-6"><b>Workout</b> Categories</h1>
+    </div>
+  </div>
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        {% for exercise in exercises %}
+          <div class="col-lg-4 col-md-6">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{ exercise.image_file.url }}" style="height: 225px; width: 100%; display: block;" />
+              <div class="card-body">
+                <p class="card-text">{{ exercise.name }}</p>
+                <p class="card-text">{{ exercise.desc }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a type="button" href="{% url 'listpage' exercise.name %}" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

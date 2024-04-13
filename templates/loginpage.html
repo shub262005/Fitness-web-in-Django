@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}" />
+  </head>
+
+  <body>
+    
+      <div class="jumbotron heading">
+        <h2>FitLife Hub Login</h2>
+      </div>
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card login-form">
+            <div class="card-header">
+              <b>Login</b>
+            </div>
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username"><b>Username</b></label>
+                  <input type="text" name="usernameId" class="form-control" id="usernameId" placeholder="Enter your username" />
+                </div>
+                <div class="form-group">
+                  <label for="password"><b>Password</b></label>
+                  <input type="password" name="passwordId" class="form-control" id="passwordId" placeholder="Enter your password" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn">Login</button>
+                  <a href="{% url "registerpage" %}" class="btn mx-2">Register</a>
+                </div>
+
+              </form>
+              {% if messages %}
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

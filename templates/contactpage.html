@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Contact
+{% endblock %}
+{% block custom_style %}
+  <style>
+    body {
+      background-color: #242323;
+      color: white;
+    }
+    .jumbotron-fluid {
+      padding: 20px;
+    }
+    h1 {
+      color: #c0f03c;
+    }
+    .btn {
+      background-color: #c0f03c;
+    }
+    .btn:hover {
+      background-color: green !important;
+      color: black !important;
+    }
+    .form-control:focus {
+      border: 2px solid #c0f03c;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron jumbotron-fluid bg-dark">
+    <div class="container">
+      <h1 class="display-6">Contact us</h1>
+    </div>
+  </div>
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="nameId">Name:</label>
+        <input type="text" class="form-control" name="nameId" id="nameId" required />
+      </div>
+      <div class="form-group">
+        <label for="emailId">Email:</label>
+        <input type="text" class="form-control" name="emailId" id="emailId" required />
+      </div>
+      <div class="form-group">
+        <label for="descId">Comment</label>
+        <textarea name="descId" id="descId" class="form-control" cols="30" rows="10" required></textarea>
+      </div>
+      <div class="mx-auto" style="width: 200px;">
+        <button type="submit" class="btn">Send Comment</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

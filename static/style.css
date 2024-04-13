@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    color: aliceblue
+}
+
+:root {
+    ---prime: #c0f03c;
+}
+
+body {
+    background-color: #000000;
+}
+
+/*---------------------------------- style navbar----------------------------------------*/
+.navbar {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    padding: 30px 120px;
+    background-color: transparent;
+    justify-content: space-between;
+    z-index: 999;
+    transition: 0.5s ease;
+
+}
+
+.logo {
+    font-size: 2.8em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* responsive */
+.sidebar li {
+    height: 50px;
+}
+
+.sidebar ul {
+    width: 100%;
+    list-style: none;
+}
+
+.close {
+    fill: white;
+}
+
+.close:hover {
+    fill: black;
+}
+
+.sidebar a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #c0f03c;
+    color: black;
+}
+
+.open {
+    fill: white;
+    display: none;
+}
+
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 1000;
+    background-color: rgb(52, 52, 52);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(107, 230, 6, 0.2);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+}
+
+@media(max-width:850px) {
+    .hideOnMobile {
+        display: none;
+    }
+
+    .open {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+
+
+}
+
+@media(max-width:420px) {
+    .sidebar {
+        width: 100%;
+    }
+
+
+}
+
+.logo B {
+    color: var(---prime);
+}
+
+.ol1 {
+    display: flex;
+    margin: auto 0;
+}
+
+.ol1 li {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.ol1 li a {
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.ol1 li:hover a {
+    color: var(---prime)
+}
+
+.view {
+    width: 100%;
+    min-height: 80vh;
+    position: relative;
+}
+
+.home {
+    display: flex;
+    min-height: 120vh;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 95%, 0 100%);
+}
+
+.banner {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: url(img/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: brightness(40%);
+}
+
+.hightlights {
+    width: 70%;
+    position: relative;
+    display: inline-block;
+    z-index: 11;
+}
+
+.hightlights h3 {
+    display: inline;
+    font-size: 2vw;
+    padding: 5px 20px;
+    font-weight: lighter;
+    text-transform: capitalize;
+    border-left: 6px solid var(---prime);
+}
+
+.hightlights h5 {
+    font-size: 9vw;
+    text-align: center;
+    font-weight: normal;
+}
+
+.hightlights b {
+    color: var(---prime);
+    font-weight: 800;
+    font-family: sans-serif;
+}
+
+.hightlights .tagline {
+    color: #dbd7d7;
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: normal;
+}
+
+.hightlights .join {
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    font-weight: 800;
+    padding: 5px 20px;
+    font-size: 1.5vw;
+    margin-top: 1.2em;
+    color: var(--prime);
+    border: 2px solid var(---prime);
+    border-radius: 50px;
+    background: transparent;
+    text-transform: uppercase;
+    transition: 0.3% ease;
+}
+
+.hightlights .join:hover {
+    color: #000000;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    background: var(---prime);
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.main h2 {
+    font-size: 2.5vw;
+    position: relative;
+    text-align: center;
+    padding-top: 100px;
+    display: inline-block;
+}
+
+span {
+    color: var(---prime);
+}
+
+.main h2::before {
+    position: absolute;
+    content: '';
+    background: var(---prime);
+    height: 3px;
+    width: 30px;
+    right: -15px;
+    bottom: 0;
+    border-radius: 50px;
+}
+
+.main h6 {
+    margin-top: 10px;
+    font-size: 13px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 0 30px;
+    justify-content: center;
+}

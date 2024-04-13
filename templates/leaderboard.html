@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+  Leaderboard
+{% endblock %}
+
+{% block custom_style %}
+  <style>
+    body {
+      background-color: #242323;
+      font-size: 1.2rem;
+    }
+    b {
+      font-weight: 500;
+    }
+    td {
+      color: white;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-6"><b>Leaderboard</b></h1>
+    </div>
+  </div>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <b>Rank</b>
+          </th>
+          <th>
+            <b>Username</b>
+          </th>
+          <th>
+            <b>Streak Count</b>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for userdata in streaks %}
+          {% if userdata.user.username != 'admin' %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ userdata.user.username }}</td>
+              <td>{{ userdata.count }}</td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

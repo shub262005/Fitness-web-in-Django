@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(43, 43, 43);
+    color: #c0f03c;
+    height: 100vh;
+   
+}
+
+.form-control {
+    font-size: 18px;
+}
+
+.form-group input[type='text'],
+.form-group input[type='password'] {
+    height: 50px;
+}
+
+.card {
+    background-color: black;
+    max-width: 500px;
+}
+
+.card-header {
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+
+.btn {
+    background-color: #c0f03c;
+    width: fit-content;
+}
+
+.btn:hover {
+    background-color: #769f07;
+    color: white;
+}
+
+.heading {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 10vh;
+    background-color: black;
+}

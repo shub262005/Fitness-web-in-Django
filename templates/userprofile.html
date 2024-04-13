@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}
+  User Profile
+{% endblock %}
+{% block custom_style %}
+  <style>
+    body {
+      background-color: #242323;
+      color: white;
+      height: 100vh;
+      color: white;
+    }
+    .table {
+      color: white !important;
+    }
+    .table th {
+      text-align: start;
+      width: 30%;
+    }
+    .table-borderless td {
+      border: none;
+    }
+    .card {
+      min-width: 200px;
+      max-width: 500px;
+      min-height: 40vh;
+      font-size: 1.2rem;
+    }
+    .image-badge {
+      max-width: 200px;
+      max-height: 200px;
+      border: 2px solid gold;
+      border-radius: 50%;
+    }
+    .jumbotron {
+      padding: 15px;
+    }
+    .jumbotron h1 {
+      font-size: 1.5rem;
+    }
+  </style>
+{% endblock %}
+{% block body %}
+  {% load static %}
+  <div class="jumbotron bg-dark">
+    <h1><b>User Profile</b></h1>
+  </div>
+
+  <div class=" container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card bg-dark">
+          <table class="table table-borderless">
+            <tr>
+              <th class="px-2">Username:</th>
+              <td class="px-2">{{ profile.user.username }}</td>
+            </tr>
+            <tr>
+              <th class="px-2">Name:</th>
+              <td class="px-2">{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
+            </tr>
+            <tr>
+              <th class="px-2">Email:</th>
+              <td class="px-2">{{ profile.user.email }}</td>
+            </tr>
+            <tr>
+              <th class="px-2">Streak:</th>
+              <td class="px-2">{{ profile.streakcount }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card bg-dark" style="width: 18rem;">
+          <img class="card-img-top"
+            src="{% if profile.streakcount > 30 %}
+              {% static 'img/third.jpg' %}
+            {% elif profile.streakcount > 7 %}
+              {% static 'img/second.jpg' %}
+            {% else %}
+              {% static 'img/first.jpg' %}
+            {% endif %}"
+            alt="Card image cap" />
+
+          <div class="card-body">
+            <h5 class="card-title">
+              {% if profile.streakcount > 30 %}
+                Super
+              {% elif profile.streakcount > 7 %}
+                Gold
+              {% else %}
+                Beginner
+              {% endif %}Badge
+            </h5>
+            <p class="card-text">
+              Badge Earned for more than{% if profile.streakcount > 30 %}
+                30
+              {% elif profile.streakcount > 7 %}
+                7
+              {% else %}
+                1
+              {% endif %}Streaks
+            </p>
+            {% comment %} <a href="#" class="btn btn-primary">Share</a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

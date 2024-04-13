@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block custom_style %}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .videoplayer {
+      margin: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+    
+    p {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .contentname {
+      font-size: 1.5rem;
+    }
+    
+    .container {
+      background-color: #eee;
+      margin-left: 5px;
+    }
+    
+    .video-list-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      background-color: black;
+    }
+    .video-list-item:hover {
+      border: #c0f03c solid 2px;
+    }
+    .video-thumbnail {
+      max-width: 170px;
+      margin-right: 15px;
+      border-radius: 2%;
+    }
+    
+    .video-details {
+      flex-grow: 1;
+    }
+    
+    body,
+    .container {
+      background-color: #242323;
+    }
+    .btn {
+      background-color: #c0f03c;
+      color: black;
+    }
+  </style>
+{% endblock %}
+{% block title %}
+  Content
+{% endblock %}
+{% block body %}
+  <div class="row">
+    <div class="col-md-7">
+      {% for x in contentpost %}
+        <iframe class="videoplayer" width="900" height="600" src="{{ x.videolink }}&rel=0" title="{{ x.name }}" rel="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="contentname">{{ x.name }}</p>
+        <p>{{ x.typeexercise }}</p>
+        <p>
+          <b>Description</b> - {{ x.desc }}
+        </p>
+      {% endfor %}
+    </div>
+    <div class="col-md-5">
+      <div class="outside">
+        <div class="container mt-0">
+          {% for x in exerciselists %}
+            <div class="video-list-item">
+              <img src="{{ x.thumbnail.url }}" alt="Video Thumbnail" class="video-thumbnail" />
+              <div class="video-details">
+                <h5>{{ x.name }} - {{ x.typeexercise }}</h5>
+                <p>{{ x.desc }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a type="button" href="{% url 'contentpage' x.name %}" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

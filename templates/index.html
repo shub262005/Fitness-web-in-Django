@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness and Workout</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+      function showSideBar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function closeSideBar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="#" class="logo"><b>FitLifeHub</b></a>
+      <ol class="ol1">
+        <li class="hideOnMobile">
+          <a href="{% url 'index' %}">home</a>
+        </li>
+        <li class="hideOnMobile">
+          <a href="#about">about</a>
+        </li>
+        <li class="hideOnMobile">
+          <a href="{% url 'workoutpage' %}">workout</a>
+        </li>
+
+        <li class="hideOnMobile">
+          <a href="{% url 'dietpage' %}">diet</a>
+        </li>
+        <li class="hideOnMobile">
+          <a href="{% url 'contactpage' %}">contact</a>
+        </li>
+        {% if user.is_authenticated and user.is_staff %}
+          <li class="hideOnMobile">
+            <a href="{% url 'admin:index' %}">Admin</a>
+          </li>
+        {% endif %}
+        <li class="hideOnMobile">
+          {% if user.is_authenticated %}
+            <a href="{% url 'logoutpage' %}" class="join">Logout</a>
+          {% endif %}
+        </li>
+        <li onclick="showSideBar()">
+          <svg class="open" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="32">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+          </svg>
+        </li>
+      </ol>
+    </div>
+
+    <div class="sidebar">
+      <ul>
+        <li class="close" onclick="closeSideBar()">
+          <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+              <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'index' %}">Home</a>
+        </li>
+
+        <li>
+          <a href="{% url 'workoutpage' %}">Workout</a>
+        </li>
+
+        <li>
+          <a href="{% url 'dietpage' %}">Diet</a>
+        </li>
+        <li>
+          <a href="{% url 'contactpage' %}">Contact</a>
+        </li>
+        {% if user.is_authenticated and user.is_staff %}
+          <li>
+            <a href="{% url 'admin:index' %}">Admin</a>
+          </li>
+        {% endif %}
+        <li>
+          {% if user.is_authenticated %}
+            <a href="{% url 'logoutpage' %}" class="join">Logout</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+
+    <section id="home" class="home view">
+      <div class="hightlights">
+        <h3>Feel the power Within</h3>
+        <h5><b>FITLIFE</b>Hub</h5><br />
+
+        {% if user.is_authenticated %}
+          <p class="tagline">Welcome User</p>
+        {% else %}
+          <a href="{% url 'loginpage' %}" class="join">Join Now</a>
+        {% endif %}
+      </div>
+      <div class="banner"></div>
+    </section>
+
+    <section id="about" class="about view">
+      <div class="main">
+        <h2><span>A</span>bout US</h2>
+        <h6>all Information about website</h6>
+      </div>
+      <div class="content">
+        <div class="cols">
+          <p>
+            <b>All</b> Our website is a dynamic hub for fitness enthusiasts, offering an array of essential features to support your health and wellness goals. With an extensive library of workout videos, users can access a variety of exercises tailored to different fitness levels and preferences, ensuring a versatile and engaging experience. Our BMI calculator provides valuable insights into personal health metrics, empowering individuals to understand their body composition and set realistic fitness objectives. Furthermore, our platform goes beyond basic metrics by offering customized diet plans based on users' BMI results, fostering a holistic approach to nutrition and fitness. By integrating these functionalities seamlessly, we strive to provide a comprehensive solution for individuals seeking to optimize their physical well-being and achieve lasting results.Our website is a dynamic hub for fitness enthusiasts, offering an array of essential features to support your health and wellness goals. With an extensive library of workout videos, users can access a variety of exercises tailored to different fitness levels and preferences, ensuring a versatile and engaging experience. Our BMI calculator provides valuable insights into personal health metrics, empowering individuals to understand their body composition and set realistic fitness objectives. Furthermore, our platform goes beyond basic metrics by offering customized diet plans based on users' BMI results, fostering a holistic approach to nutrition and fitness. By integrating these functionalities seamlessly, we strive to provide a comprehensive solution for individuals seeking to optimize their physical well-being and achieve lasting results.
+          </p>
+          <a href="#">more</a>
+        </div>
+        <div class="cols">
+          <div class="box">
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

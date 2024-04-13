@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Diet Category
+{% endblock %}
+{% block custom_style %}
+  <style>
+    body,
+    .container {
+      background-color: #242323;
+      color: white;
+    }
+    .btn {
+      background-color: #c0f03c;
+      color: black;
+    }
+    .card-body {
+      background-color: black;
+      color: white;
+      height: 170px;
+    }
+    .card:hover {
+      border: #c0f03c solid 2px;
+    }
+    .card-img-top {
+      margin: 5px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-6"><b>Diet</b> Categories</h1>
+  </div>
+</div>
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        {% for diet in diets %}
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{ diet.image_file.url }}" style="height: 350px; width: 320px; display: block;" />
+              <div class="card-body">
+                <p class="card-text">{{ diet.name }} BMI</p>
+                <p class="card-text">{{ diet.desc }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a type="button" href="{% url 'dietlists' diet.name %}" class="btn btn-sm btn-outline-secondary">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}" />
+  </head>
+
+  <body>
+    <div class="jumbotron heading container-fluid">
+      <h3>FITLIFEHUB | Register</h3>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card login-form">
+            <div class="card-header">
+              <b>Register</b>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="{% url 'registerpage' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="usernameId"><b>Username</b></label>
+                  <input type="text" class="form-control" name="username" id="usernameId" placeholder="Enter your username" />
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="nameId"><b>First Name</b></label>
+                      <input type="text" class="form-control" name="first_name" id="fullnameId" placeholder="Enter your First Name" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="last_name"><b>Last Name</b></label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter your Last Name" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="emailId"><b>Email</b></label>
+                  <input type="email" class="form-control" name="email" id="emailId" placeholder="Enter your Email" />
+                </div>
+                <div class="form-group">
+                  <label for="passwordId"><b>Password</b></label>
+                  <input type="password" name="password" class="form-control" id="passwordId" placeholder="Enter your password" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn">Register</button>
+                  <a href="{% url 'loginpage' %}" class="btn mx-2">Login</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

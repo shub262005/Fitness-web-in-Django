@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+  Diet Content
+{% endblock %}
+{% block custom_style %}
+  <style>
+    body {
+      background-color: #242323;
+      color: white;
+    }
+    .page {
+      margin: 20px;
+      padding: 20px;
+      background-color: #242424;
+      border: 1px solid #c0f03c;
+      box-shadow: 2px 4px 2px 2px #c0f03c;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #c0f03c;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    }
+    
+    .thumbnail {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+{% endblock %}
+{% block body %}
+  
+  {% for data in dietdata %}
+    <div class="page">
+      <div class="jumbotron bg-dark">
+        <h1 class="display-4">{{ data.name }}</h1>
+        <div class="lead">
+          <p>For {{ data.typeName }} BMI</p>
+          <p>Description: {{ data.desc }}</p>
+        </div>
+      </div>
+
+      <img src="{{ data.diet_image.url }}" alt="Diet Thumbnail" class="thumbnail" />
+      <br />
+      <div class="content container-fluid">{{ data.dietContent|safe }}</div>
+    </div>
+  {% endfor %}
+{% endblock %}
