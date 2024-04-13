@@ -1,1 +1,1 @@
-Install Djnago, Pillow, ckeditor, ckeditor-5 first
+Install Django, Pillow, ckeditor, ckeditor-5 first
